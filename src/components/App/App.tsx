@@ -9,8 +9,8 @@ function App() {
     <>
       <Search />
       <Onemap center={defaultPosition} zoom={17}>
-        <TileLayer
-          url={`http://onemap.md/tile?x={x}&y={y}&z={z}&size=256`}
+        <TileLayer detectRetina={true} minZoom={11} maxZoom={21}
+          url={`http://localhost/tile?x={x}&y={y}&z={z}&size=256`}
           attribution="&copy; OpenStreetMap contributor (OSM is awesome)"
         />
       </Onemap>
