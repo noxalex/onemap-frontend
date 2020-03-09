@@ -1,11 +1,12 @@
 import React from 'react';
 import { Input } from 'antd';
+import { SearchProps } from './types';
 import SearchResults from './SearchResults';
 import useSearchData from './hooks';
 
 const { Search: SearchInput } = Input;
 
-const Search: React.FC = () => {
+const Search: React.FC<SearchProps> = ({ setLayer }) => {
   const [isActive, setActive] = React.useState(false);
   const [isSearchResultsVisible, setSearchResultsVisible] = React.useState(true);
   const [searchKey, setSearchKey] = React.useState();
@@ -31,6 +32,7 @@ const Search: React.FC = () => {
           loading={isPending}
           isVisible={isSearchResultsVisible}
           setVisibility={setSearchResultsVisible}
+          setLayer={setLayer}
         />
       }
     </>

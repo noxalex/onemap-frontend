@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, Icon } from 'antd';
+import { Card, Icon, List } from 'antd';
 
 import { SearchResultsProps } from '../types';
 
 
-const SearchResults: React.FC<SearchResultsProps> = ({ data, isVisible, loading, setVisibility }) => {
+const SearchResults: React.FC<SearchResultsProps> = ({ data, isVisible, loading, setVisibility, setLayer }) => {
 
   if (!isVisible) return null;
 
@@ -14,7 +14,15 @@ const SearchResults: React.FC<SearchResultsProps> = ({ data, isVisible, loading,
       <Card size="small" title="Результаты поиска:">
         {loading ?
           <Icon type="loading" style={{ fontSize: 24, color: '#40a9ff' }} /> :
-          data.map(item => (<p>{item.name}</p>))
+          <List>
+            {data.map(item =>
+              (<List.Item key={item.id}
+                onClick={() => setLayer(JSON.parse(item.geoJSON))}
+                className="search-result-item">
+                <span>{item.name}</span>
+              </List.Item>)
+            )}
+          </List>
         }
       </Card>
     </div>
