@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Input, Icon } from 'antd';
 import { SearchProps } from './types';
 import SearchResults from './SearchResults';
 import useSearchData from './hooks';
@@ -23,7 +23,7 @@ const Search: React.FC<SearchProps> = ({ setLayer }) => {
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
       >
-        <SearchInput onSearch={handleSearchSubmit} />
+        <SearchInput onSearch={handleSearchSubmit} loading={isPending} />
       </div>
       {
         searchData && searchData.length > 0 &&

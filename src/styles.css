@@ -71,3 +71,6 @@ code {
 .search-result-item span{
   padding: 0 15px;
 }
+.search-result-item.item-active {
+  background: #f0f8ff;
+}
